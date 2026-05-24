@@ -2,111 +2,150 @@
   <img loading="lazy" src="readme-res/banner.png"/>
 </h1>
 <p align="center">
-  <a href="https://github.com/salvogiangri/UN1CA/blob/sixteen/LICENSE"><img loading="lazy" src="https://img.shields.io/github/license/salvogiangri/UN1CA?style=for-the-badge&logo=github"/></a>
-  <a href="https://github.com/salvogiangri/UN1CA/commits/sixteen"><img loading="lazy" src="https://img.shields.io/github/last-commit/salvogiangri/UN1CA/sixteen?style=for-the-badge"/></a>
-  <a href="https://github.com/salvogiangri/UN1CA/stargazers"><img loading="lazy" src="https://img.shields.io/github/stars/salvogiangri/UN1CA?style=for-the-badge"/></a>
-  <a href="https://github.com/salvogiangri/UN1CA/actions/workflows/build.yml"><img loading="lazy" src="https://img.shields.io/github/actions/workflow/status/salvogiangri/UN1CA/build.yml?style=for-the-badge"/></a>
-  <a href="https://crowdin.com/project/UN1CA"><img loading="lazy" src="https://img.shields.io/badge/Crowdin-263238?style=for-the-badge&logo=crowdin"/></a>
-</p>
-<p align="center">UN1CA <i>(/ˈu.ni.ka/)</i> is a work-in-progress custom firmware for Samsung Galaxy devices.</p>
 
-<p align="center">
-  <a href="https://github.com/salvogiangri/UN1CA/discussions">🚀 Discussions</a>
-  •
-  <a href="https://t.me/unicarom">💬 Telegram</a>
-</p>
+<p align="center">KonfigX is a next-generation custom firmware for Samsung Galaxy devices.
 
-# What is UN1CA?
-UN1CA is a work-in-progress custom firmware for Samsung Galaxy devices, designed to provide a refined, optimized and more rich One UI experience.
-It is based on the latest and greatest iteration of Samsung's UX and it integrates numerous improvements, optimizations and exclusive features.
+<p align="center"> Our Telegram <p align="center">(https://t.me/KonfigX)
 
-The UN1CA build system automatically builds the required tools, downloads and extracts firmware components, applies the required patches and generates a flashable zip for the target device.
+---
 
-The goal is to deliver a fast, smooth and modern UX while offering additional tools, modifications and system‑level enhancements tailored for power users.
+# KonfigX
 
-Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
+> Refined • Optimized • Powerful One UI Experience
 
-# Features
-### Core features:
-- Based on the latest stable Galaxy S22 firmware
-- EROFS powered
-- Galaxy S25 wallpapers/sounds included
-- Galaxy AI support
-  - Audio eraser
-  - Browsing assist
-  - Call assist
-  - Drawing assist
-  - Interpreter
-  - Note assist
-  - Now brief
-  - Photo assist
-  - Semantic search
-  - Transcript assist
-  - Writing assist
-- High end animations
-- Native/live blur support*
-- AOD clock transition support
-- Adaptive color tone support
-- Adaptive refresh rate support
-- Extra brightness support
-- Picture remaster support
-- Object, shadow and reflection eraser support
-- Image clipper support
-- Multi user support
-- Samsung DeX support**
-- Camera privacy toggle support
-- Debloated from useless system services/additional apps
-- Dual Messenger available for all apps
-- Custom FlipFont fonts support
-- Outdoor mode support
-- Auto PIN confirm with 4 digits
-- [BluetoothLibraryPatcher](https://github.com/3arthur6/BluetoothLibraryPatcher) integrated
-- [KnoxPatch](https://github.com/salvogiangri/KnoxPatch) integrated
-- Extra CSC features enabled (Call recording, Hiya, Network speed in status bar, AltZLife)
+---
 
-\* Not available on MediaTek devices<br>
-\*\* DeX via HDMI not available for devices without USB-C DP support
+##  What is KonfigX?
 
-### UN1CA-exclusive features:
-- Integrated OTA updates app
-- Native/live blur toggle
-- One UI Home animations option
-- Vulkan renderer toggle
-- Key attestation spoof ([TrickyStore](https://github.com/5ec1cff/TrickyStore)) options*
-- Play Integrity Fix integrated
-- Ability to hide installed apps ([Hide My Applist](https://github.com/Dr-TSNG/Hide-My-Applist))
-- Ability to hide developer options
-- Allow app downgrade toggle
-- Allow installing apps with old targetSdk toggle
-- Allow secure screenshot toggle
-- Screenshot/screen recording detection toggle
-- Unlimited backup storage on Google Photos
-- Games FPS unlock toggle
+KonfigX is a work-in-progress custom firmware designed to deliver a clean, fast, and feature-rich One UI experience.
 
-\* Requires a valid keybox
+Ported from the latest, and greatest S23FE OneUI 8.0 Firmware.
 
-# Licensing
-This project is licensed under the terms of the [GNU General Public License v3.0](LICENSE). External dependencies might be distributed under a different license, such as:
-- [android-tools](https://github.com/nmeum/android-tools), licensed under the [Apache License 2.0](https://github.com/nmeum/android-tools/blob/master/LICENSE)
-- [apktool](https://github.com/iBotPeaches/Apktool), licensed under the [Apache License 2.0](https://github.com/iBotPeaches/Apktool/blob/master/LICENSE.md)
-- [erofs-utils](https://github.com/sekaiacg/erofs-utils/), dual license ([GPL-2.0](https://github.com/sekaiacg/erofs-utils/blob/dev/LICENSES/GPL-2.0), [Apache-2.0](https://github.com/sekaiacg/erofs-utils/blob/dev/LICENSES/Apache-2.0))
-- [img2sdat](https://github.com/xpirt/img2sdat), licensed under the [MIT License](https://github.com/xpirt/img2sdat/blob/master/LICENSE)
-- [platform_build](https://android.googlesource.com/platform/build/) (ext4_utils, f2fs_utils, signapk), licensed under the [Apache License 2.0](https://source.android.com/docs/setup/about/licenses)
+The build system downloads firmware components, applies patches, and produces a flashable ZIP for supported devices.
 
-# Contributors
-<a href="https://github.com/salvogiangri/UN1CA/graphs/contributors"><img loading="lazy" src="https://contrib.rocks/image?repo=salvogiangri/UN1CA"/></a>
+---
 
-# Credits
-A special thanks goes to the following for their invaluable contributions in no particular order:
-- **[ShaDisNX255](https://github.com/ShaDisNX255)** for his help, time and for his [NcX ROM](https://github.com/ShaDisNX255/NcX_Stock) which inspired this project
-- **[DavidArsene](https://github.com/DavidArsene)** for his help and time
-- **[paulowesll](https://github.com/paulowesll)** for his help and support
-- **[Simon1511](https://github.com/Simon1511)** for his support and some of the device-specific patches
-- **[ananjaser1211](https://github.com/ananjaser1211)** for troubleshooting and his time
-- **[Fede2782](https://github.com/Fede2782)** for his contributions and help with Exynos/MTK support
-- **[iDrinkCoffee](https://github.com/iDrinkCoffee-TG)** and **[RisenID](https://github.com/RisenID)** for their support
-- **[LineageOS Team](https://www.lineageos.org/)** for their original [OTA updater implementation](https://github.com/LineageOS/android_packages_apps_Updater)
-- *All the UN1CA project forks, contributors, testers and users ❤️*
+##  Features
 
-# Stargazers over time
-[![Stargazers over time](https://starchart.cc/salvogiangri/UN1CA.svg)](https://starchart.cc/salvogiangri/UN1CA)
+###  Core System
+
+* Based on latest Galaxy S23 FE OneUI 8.0 firmware
+* EROFS filesystem
+* Debloated system
+* Optimized performance & smoothness
+
+###  UI & Experience
+
+* High-end animations
+* Native / Live blur support
+* Adaptive color tone
+* Adaptive refresh rate
+* AOD clock transitions
+
+###  Galaxy AI Integration
+
+* Audio eraser
+* Browsing assist
+* Call assist
+* Drawing assist
+* Interpreter
+* Note assist
+* Photo assist
+* Semantic search
+* Writing assist
+* Transcript assist
+
+###  Media & Camera
+
+* Object / shadow / reflection eraser
+* Image clipper
+* Picture remaster
+
+###  System & Privacy
+
+* Camera privacy toggle
+* Hide developer options
+* Screenshot detection toggle
+
+###  Extra Features
+
+* Samsung DeX support
+* Multi-user support
+* Dual Messenger for all apps
+* Auto PIN confirm
+* Extra brightness
+* Outdoor mode
+
+###  Tweaks
+
+* App downgrade support
+* Old targetSdk install support
+* Play Integrity Fix
+* Key attestation spoofing
+* Unlimited Google Photos backup
+* Games FPS unlock
+
+---
+
+##  Build System
+
+KonfigX includes an build system that:
+
+* Downloads required firmware
+* Extracts and patches system components
+* Integrates custom features
+* Outputs a flashable ZIP
+
+---
+
+##  Licensing
+
+Licensed under GNU GPL v3.0.
+
+External tools may use different licenses:
+
+* android-tools (Apache 2.0)
+* apktool (Apache 2.0)
+* erofs-utils (GPL-2.0 / Apache-2.0)
+* img2sdat (MIT)
+* Android platform build tools (Apache 2.0)
+* smali (multiple licences)
+---
+
+##  Credits
+
+Special thanks to all projects and developers that inspired or contributed to KonfigX:
+
+### Projects
+
+* UN1CA (for features,build system)
+* LemonUI (for build.prop tweaks)
+* NightOS (for debloat list,principal idea of KonfigX ROM Idea)
+* H33CKER (for tweaks)
+* MonsterROM (for tweaks)
+* Loftenth (for bug fixes)
+* Haip4eva (for tweaks)
+* ExtremeROM (for tweaks, platform, and target for exynos2100)
+* LumiROM (for tweaks and idea of ROM)
+* ProjectNERV (for base of the ROM banner and build system)
+
+### Contributors
+
+- **[K0nf1gur@r3 Ph0n3s](https://github.com/KonfigurarePhones)** (Owner)
+- **[YACINEGTI](https://github.com/Yacinegti-DZ)** (o1s + helper)
+- **[3k5i](https://github.com/samsungs215Ghype)** (o1s + helper)
+- **[at.wralt](https://github.com/idkqwertyuiopasdf)** (doing half of work)
+* tzerx (tester)
+* Harvey (samsung a15 support,coding team)
+* qoij (a22x tester)
+* ExtremeXT (for platform, and target for 2100)
+
+
+-------------------------------------------------------------------------------
+
+##  Help
+
+There is some ways to help our project!
+
+*  Contribute by forking the repo, and opening a pull request
+*  Starring the repo
