@@ -5,7 +5,7 @@
 
 <p align="center">KonfigX is a next-generation custom firmware for Samsung Galaxy devices.
 
-<p align="center"> Our Telegram <p align="center">(https://t.me/KonfigX)
+<p align="center"> Our Telegram <p align="center">(https://t.me/KonfigXROMTalk)
 
 ---
 
