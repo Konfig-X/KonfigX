@@ -19,7 +19,7 @@
 
 KonfigX is a work-in-progress custom firmware designed to deliver a clean, fast, and feature-rich One UI experience.
 
-Ported from the latest, and greatest S23FE OneUI 8.0 Firmware.
+Ported from the latest, and greatest S24 FE One UI 8.0 Firmware.
 
 The build system downloads firmware components, applies patches, and produces a flashable ZIP for supported devices.
 
@@ -29,7 +29,7 @@ The build system downloads firmware components, applies patches, and produces a 
 
 ###  Core System
 
-* Based on latest Galaxy S23 FE OneUI 8.0 firmware
+* Based on latest Galaxy S24 FE One UI 8.0 firmware
 * EROFS filesystem
 * Debloated system
 * Optimized performance & smoothness
@@ -79,7 +79,7 @@ The build system downloads firmware components, applies patches, and produces a 
 ###  Tweaks
 
 * App downgrade support
-* Old targetSdk install support
+* Old targetSdk install support (similar to --bypass-low-target-sdk-block)
 * Play Integrity Fix
 * Key attestation spoofing
 * Unlimited Google Photos backup
