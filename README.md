@@ -19,7 +19,7 @@
 
 KonfigX is a work-in-progress custom firmware designed to deliver a clean, fast, and feature-rich One UI experience.
 
-Ported from the latest, and greatest S24 FE One UI 8.0 Firmware.
+Ported from the latest, and greatest S24 FE One UI 8.0 Firmware. (subject to change)
 
 The build system downloads firmware components, applies patches, and produces a flashable ZIP for supported devices.
 
@@ -29,7 +29,7 @@ The build system downloads firmware components, applies patches, and produces a 
 
 ###  Core System
 
-* Based on latest Galaxy S24 FE One UI 8.0 firmware
+* Based on the latest Galaxy S24 FE One UI 8.0 firmware (subject to change)
 * EROFS filesystem
 * Debloated system
 * Optimized performance & smoothness
@@ -83,13 +83,12 @@ The build system downloads firmware components, applies patches, and produces a 
 * Play Integrity Fix
 * Key attestation spoofing
 * Unlimited Google Photos backup
-* Games FPS unlock
 
 ---
 
 ##  Build System
 
-KonfigX includes an build system that:
+KonfigX includes a build system that:
 
 * Downloads required firmware
 * Extracts and patches system components
@@ -118,9 +117,9 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 
 ### Projects
 
-* UN1CA (for features,build system)
+* UN1CA (for features, patches, and the build system)
 * LemonUI (for build.prop tweaks)
-* NightOS (for debloat list,principal idea of KonfigX ROM Idea)
+* NightOS (for debloat list and the inspiration for KonfigX)
 * H33CKER (for tweaks)
 * MonsterROM (for tweaks)
 * Loftenth (for bug fixes)
@@ -133,9 +132,10 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 - **[K0nf1gur@r3 Ph0n3s](https://github.com/KonfigurarePhones)** (Owner)
 - **[YACINEGTI](https://github.com/Yacinegti-DZ)** (o1s + helper)
 - **[3k5i](https://github.com/samsungs215Ghype)** (o1s + helper)
+- **[DaniTheSillyFem](https://github.com/DaniTheSillyFem)** (a34x + helper)
 - **[at.wralt](https://github.com/idkqwertyuiopasdf)** (doing half of work)
 * tzerx (tester)
-* Harvey (samsung a15 support,coding team)
+* Harvey (Galaxy A15 support, coding team)
 * qoij (a22x tester)
 * ExtremeXT (for platform, and target for 2100)
 
