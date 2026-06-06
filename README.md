@@ -130,9 +130,9 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 ### Contributors
 
 - **[K0nf1gur@r3 Ph0n3s](https://github.com/KonfigurarePhones)** (Owner)
+- **[DaniTheSillyFem](https://github.com/DaniTheSillyFem)** (Co-Owner??? + a34x)
 - **[YACINEGTI](https://github.com/Yacinegti-DZ)** (o1s + helper)
 - **[3k5i](https://github.com/samsungs215Ghype)** (o1s + helper)
-- **[DaniTheSillyFem](https://github.com/DaniTheSillyFem)** (a34x + helper)
 - **[at.wralt](https://github.com/idkqwertyuiopasdf)** (doing half of work)
 * tzerx (tester)
 * Harvey (Galaxy A15 support, coding team)
