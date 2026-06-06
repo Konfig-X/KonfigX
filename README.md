@@ -133,7 +133,7 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 - **[DaniTheSillyFem](https://github.com/DaniTheSillyFem)** (Co-Owner??? + a34x)
 - **[YACINEGTI](https://github.com/Yacinegti-DZ)** (o1s + helper)
 - **[3k5i](https://github.com/samsungs215Ghype)** (o1s + helper)
-- **[idkqwertyuiopasdf(https://github.com/idkqwertyuiopasdf)** 
+- **[idkqwertyuiopasdf](https://github.com/idkqwertyuiopasdf)** 
 * tzerx (tester)
 * Harvey (Galaxy A15 support, coding team)
 
