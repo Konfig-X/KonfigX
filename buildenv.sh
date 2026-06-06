@@ -88,7 +88,7 @@ run_cmd()
     fi
 }
 
-alias unica=run_cmd
+alias konfigx=run_cmd
 # ]
 
 SRC_DIR="$(_GET_SRC_DIR)"
