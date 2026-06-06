@@ -5,7 +5,7 @@
 
 <p align="center">KonfigX is a next-generation custom firmware for Samsung Galaxy devices.
 
-<p align="center"> Our Telegram <p align="center">(https://t.me/KonfigXROMTalk)
+<p align="center"> Our Telegram <p align="center">(https://t.me/KonfigXROM)
 
 ---
 
@@ -19,7 +19,7 @@
 
 KonfigX is a work-in-progress custom firmware designed to deliver a clean, fast, and feature-rich One UI experience.
 
-Ported from the latest, and greatest S24 FE One UI 8.0 Firmware. (subject to change)
+Ported from the Galaxy S24 FE. (subject to change)
 
 The build system downloads firmware components, applies patches, and produces a flashable ZIP for supported devices.
 
@@ -124,7 +124,7 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 * MonsterROM (for tweaks)
 * Loftenth (for bug fixes)
 * Haip4eva (for tweaks)
-* ExtremeROM (for tweaks, platform, and target for exynos2100)
+* ExtremeROM (for tweaks)
 * LumiROM (for tweaks and idea of ROM)
 
 ### Contributors
@@ -135,7 +135,6 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 - **[3k5i](https://github.com/samsungs215Ghype)** (o1s + helper)
 - **[gඞbi](https://github.com/gyabii)** (dm1q)
 - **[idkqwertyuiopasdf](https://github.com/idkqwertyuiopasdf)** 
-* tzerx (tester)
 * Harvey (Galaxy A15 support, coding team)
 
 -------------------------------------------------------------------------------
