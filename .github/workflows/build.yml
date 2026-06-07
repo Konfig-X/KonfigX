@@ -2,7 +2,23 @@ name: Build KonfigX
 
 on:
   workflow_dispatch:
-  pull_request:
+    inputs:
+      TEST_DWNL:
+        description: 'Test samloader downloading'
+        required: true
+        default: 'no'
+        type: choice
+        options:
+        - yes
+        - no
+      DEBUG:
+        description: 'Set as debug build'
+        required: true
+        default: 'no'
+        type: choice
+        options:
+        - yes
+        - no
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -10,12 +26,14 @@ concurrency:
 
 jobs:
   build:
+    env:
+      GIT_DBG: ${{ github.event.inputs.DEBUG }}
     runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
       matrix:
-        target: [a34x, dm1q, o1s, p3s, r9s, t2s]
+        target: ${{ github.event.inputs.TEST_DWNL == 'true' && fromJSON('["o1s"]') || fromJSON('["a34x","dm1q","o1s","p3s","r9s","t2s"]') }}
 
     steps:
       - name: Checkout repo
@@ -61,37 +79,72 @@ jobs:
 
       - name: Build dependencies
         run: |
-          source ./buildenv.sh ${{ matrix.target }}
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
           ./scripts/build_dependencies.sh
 
-      - name: Download source S24 stock
-        if: ${{ endsWith(matrix.target, 'q') }}
+      - name: Test samloader rq
+        if: ${{ github.event.inputs.TEST_DWNL == 'true' }}
         run: |
           source ./buildenv.sh ${{ matrix.target }}
           ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
+          ./scripts/extract_fw.sh --ignore-target
+
+      - name: Download source S24 stock
+        if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
+        run: |
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
+          ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
 
       - name: Download source S24 FE stock
-        if: ${{ !endsWith(matrix.target, 'q') }} 
+        if: ${{ !endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
         run: |
-          source ./buildenv.sh ${{ matrix.target }}
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
           ./scripts/download_fw.sh --ignore-target -v S721BXXS7BYH1/S721BOXM7BYH1/S721BXXS7BYH1/S721BXXS7BYH1
 
       - name: Download target stock
+        if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
         run: |
-          source ./buildenv.sh ${{ matrix.target }}
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
           ./scripts/download_fw.sh --ignore-source
 
       - name: Extract stock firmwares
+        if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
         run: |
-          source ./buildenv.sh ${{ matrix.target }}
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
           ./scripts/extract_fw.sh
 
       - name: Build ROM
+        if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
         run: |
-          source ./buildenv.sh ${{ matrix.target }}
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
           ./scripts/make_rom.sh -z
 
       - name: Upload to GoFile
+        if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
         run: |
           ZIP_FILE=$(find out -maxdepth 1 -type f -name "*.zip" | head -n 1)
           RESPONSE=$(curl -s -F "file=@$ZIP_FILE" -F "token=${{ secrets.GOFILE_ID }}" -F "folderId=${{ secrets.GOFILE_FOLDER_ID }}" "https://upload-eu-par.gofile.io/uploadFile")
