@@ -175,16 +175,19 @@ PRINT_HEADER()
     echo    'ui_print(" ");'
     PRINT_SEPARATOR
     echo -n 'ui_print("'
-    echo -n "UN1CA $ROM_VERSION for $TARGET_NAME"
+    echo -n "KonfigX $ROM_VERSION for $TARGET_NAME"
     echo    '");'
-    echo    'ui_print("Coded by salvo_giangri @XDAforums");'
+    echo    'ui_print(" UN1CA — Coded by salvo_giangri @XDAforums, KonfigX — @
+Konfigurare Phones @XDAforums");'
     PRINT_SEPARATOR
     echo -n 'ui_print("'
     echo -n "One UI version: $ONEUI_VERSION"
     echo    '");'
+    PRINT_SEPARATOR
     echo -n 'ui_print("'
     echo -n "Source: $SOURCE_FINGERPRINT"
     echo    '");'
+    PRINT_SEPARATOR
     echo -n 'ui_print("'
     echo -n "Target: $TARGET_FINGERPRINT"
     echo    '");'
