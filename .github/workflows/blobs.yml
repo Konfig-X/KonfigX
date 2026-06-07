@@ -5,11 +5,6 @@ on:
   schedule:
     - cron: "0 12 * * *"
 
-permissions:
-  actions: write
-  contents: write
-  pull-requests: write
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -22,6 +17,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - module: "Galaxy A17 5G (a17xxx)"
+            device: "a17xxx"
+            firmware: "SM-A176B/INS/350042791234568"
+          - module: "Galaxy A54 5G (a54xnsxx)"
+            device: "a54xnsxx"
+            firmware: "SM-A546E/EGY/350090711234564"
           - module: "Galaxy A73 5G (a73xqxx)"
             device: "a73xqxx"
             firmware: "SM-A736B/XME/352828291234563"
@@ -31,12 +32,18 @@ jobs:
           - module: "Galaxy S22 Ultra (Exynos) (b0sxxx)"
             device: "b0sxxx"
             firmware: "SM-S908B/EUX/353074281234565"
+          - module: "Galaxy S23 (dm1qxxx)"
+            device: "dm1qxxx"
+            firmware: "SM-S911B/EUX/352404911234563"
           - module: "Galaxy Z Flip4 (b4qxxx)"
             device: "b4qxxx"
             firmware: "SM-F721B/BTE/350525851234569"
           - module: "Galaxy Tab A9+ 5G (gta9pxxx)"
             device: "gta9pxxx"
             firmware: "SM-X216B/EUX/352862571234563"
+          - module: "Galaxy Tab S11 5G (gts11xx)"
+            device: "gts11xx"
+            firmware: "SM-X736B/EUX/R52Y8065XJM"
           - module: "Galaxy S21 FE 5G (Snapdragon) (r9qxxx)"
             device: "r9qxxx"
             firmware: "SM-G990B/EUX/353718681234563"
@@ -88,12 +95,12 @@ jobs:
 
       - name: Build dependencies
         run: |
-          source ./buildenv.sh dm1q
+          source ./buildenv.sh a52sxq
           ./scripts/build_dependencies.sh
 
       - name: Update prebuilt blobs
         run: |
-          source ./buildenv.sh dm1q
+          source ./buildenv.sh a52sxq
           ./scripts/internal/update_prebuilt_blobs.sh "${{ matrix.device }}" "${{ matrix.firmware }}"
           echo "PDA_BUILD=$(cat "./prebuilts/samsung/${{ matrix.device }}/.current" | cut -d "/" -f "1")" >> "$GITHUB_ENV"
 
