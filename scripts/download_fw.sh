@@ -178,7 +178,7 @@ for i in "${FIRMWARES[@]}"; do
     if [ "$PINNED_FIRMWARE" ]; then
         SAMLOADER_ARGS+=(-v "$PINNED_FIRMWARE")
     fi
-    samloader "${SAMLOADER_ARGS[@]}" -O "$ODIN_DIR/${MODEL}_${CSC}" 1> /dev/null || exit 1
+    samloader "${SAMLOADER_ARGS[@]}" -O "$ODIN_DIR/${MODEL}_${CSC}" || exit 1
     )
 
     ZIP_FILE="$(find "$ODIN_DIR/${MODEL}_${CSC}" -name "*.zip" | sort -r | head -n 1)"
