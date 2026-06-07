@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       TEST_DWNL:
-        description: 'Test samloader downloading'
+        description: 'Test samloader downloading (default is true, CHANGE TO FALSE)'
         required: true
         default: 'yes'
         type: choice
@@ -90,10 +90,10 @@ jobs:
         if: ${{ github.event.inputs.TEST_DWNL == 'true' }}
         run: |
           source ./buildenv.sh ${{ matrix.target }}
-          ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
+          ./scripts/download_fw.sh --ignore-target -v S721BXXSBCZC5/S721BOXMBCZC5/S721BXXSBCZC5/S721BXXSBCZC5
           ./scripts/extract_fw.sh --ignore-target
 
-      - name: Download source S24 stock
+      - name: Download source S22 stock
         if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
         run: |
           if [[ "$GIT_DBG" == "true" ]]; then
@@ -101,7 +101,7 @@ jobs:
           else
             source ./buildenv.sh ${{ matrix.target }}
           fi
-          ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
+          ./scripts/download_fw.sh --ignore-target
 
       - name: Download source S24 FE stock
         if: ${{ !endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
@@ -111,7 +111,7 @@ jobs:
           else
             source ./buildenv.sh ${{ matrix.target }}
           fi
-          ./scripts/download_fw.sh --ignore-target -v S721BXXS7BYH1/S721BOXM7BYH1/S721BXXS7BYH1/S721BXXS7BYH1
+          ./scripts/download_fw.sh --ignore-target -v S721BXXSBCZC5/S721BOXMBCZC5/S721BXXSBCZC5/S721BXXSBCZC5
 
       - name: Download target stock
         if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
