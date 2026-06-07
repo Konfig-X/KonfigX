@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       TEST_DWNL:
-        description: 'Test samloader downloading'
+        description: 'Test samloader downloading (default is true, CHANGE TO FALSE)'
         required: true
         default: 'yes'
         type: choice
@@ -90,7 +90,7 @@ jobs:
         if: ${{ github.event.inputs.TEST_DWNL == 'true' }}
         run: |
           source ./buildenv.sh ${{ matrix.target }}
-          ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
+          ./scripts/download_fw.sh --ignore-target
           ./scripts/extract_fw.sh --ignore-target
 
       - name: Download stock firmwares
