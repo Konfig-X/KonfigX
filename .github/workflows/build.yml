@@ -6,7 +6,7 @@ on:
       TEST_DWNL:
         description: 'Test samloader downloading'
         required: true
-        default: 'no'
+        default: 'yes'
         type: choice
         options:
         - yes
@@ -14,7 +14,7 @@ on:
       DEBUG:
         description: 'Set as debug build'
         required: true
-        default: 'no'
+        default: 'yes'
         type: choice
         options:
         - yes
