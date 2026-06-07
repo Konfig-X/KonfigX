@@ -3,7 +3,7 @@
 
 # UN1CA configuration file for Exynos devices (essi)
 
-# Galaxy S24 FE (Exynos) (One UI 8.0/8.5?)
+# Galaxy S24 FE (Exynos) (One UI 8.5)
 SOURCE_FIRMWARE="SM-S721B/EUX/350009210129513"
 SOURCE_EXTRA_FIRMWARES=()
 SOURCE_PLATFORM_SDK_VERSION=36
