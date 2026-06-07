@@ -64,10 +64,22 @@ jobs:
           source ./buildenv.sh ${{ matrix.target }}
           ./scripts/build_dependencies.sh
 
-      - name: Download stock firmwares
+      - name: Download source S24 stock
+        if: ${{ endsWith(matrix.target, 'q') }}
         run: |
           source ./buildenv.sh ${{ matrix.target }}
-          ./scripts/download_fw.sh
+          ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
+
+      - name: Download source S24 FE stock
+        if: ${{ !endsWith(matrix.target, 'q') }} 
+        run: |
+          source ./buildenv.sh ${{ matrix.target }}
+          ./scripts/download_fw.sh --ignore-target -v S721BXXS7BYH1/S721BOXM7BYH1/S721BXXS7BYH1/S721BXXS7BYH1
+
+      - name: Download target stock
+        run: |
+          source ./buildenv.sh ${{ matrix.target }}
+          ./scripts/download_fw.sh --ignore-source
 
       - name: Extract stock firmwares
         run: |
