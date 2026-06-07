@@ -93,35 +93,14 @@ jobs:
           ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
           ./scripts/extract_fw.sh --ignore-target
 
-      - name: Download source S24 stock
-        if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
+      - name: Download stock firmwares
         run: |
           if [[ "$GIT_DBG" == "true" ]]; then
             source ./buildenv.sh --debug ${{ matrix.target }}
           else
             source ./buildenv.sh ${{ matrix.target }}
           fi
-          ./scripts/download_fw.sh --ignore-target -v S921BXXS9BYH2/S921BOXM9BYH2/S921BXXS9BYH2/S921BXXS9BYH2
-
-      - name: Download source S24 FE stock
-        if: ${{ !endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
-        run: |
-          if [[ "$GIT_DBG" == "true" ]]; then
-            source ./buildenv.sh --debug ${{ matrix.target }}
-          else
-            source ./buildenv.sh ${{ matrix.target }}
-          fi
-          ./scripts/download_fw.sh --ignore-target -v S721BXXS7BYH1/S721BOXM7BYH1/S721BXXS7BYH1/S721BXXS7BYH1
-
-      - name: Download target stock
-        if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
-        run: |
-          if [[ "$GIT_DBG" == "true" ]]; then
-            source ./buildenv.sh --debug ${{ matrix.target }}
-          else
-            source ./buildenv.sh ${{ matrix.target }}
-          fi
-          ./scripts/download_fw.sh --ignore-source
+          ./scripts/download_fw.sh
 
       - name: Extract stock firmwares
         if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
