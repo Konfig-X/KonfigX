@@ -10,6 +10,7 @@
   •
   <a href="https://t.me/KonfigXROMTalk">💬 Telegram Chat</a>
 </p>
+
 ---
 
 # KonfigX
