@@ -15,7 +15,7 @@ index 6678e58..da19016 100644
      iput-object v0, v4, Lcom/samsung/android/server/wifi/SemWifiInjector;->mWifiCoexManager:Lcom/samsung/android/server/wifi/SemWifiCoexManager;
  
      .line 1622
--    const-string v0, "2"
+-    const-string v0, "3"
 +    const-string v0, "CONFIG_CONNECTION_PERSONALIZATION"
  
      .line 1624
