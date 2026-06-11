@@ -172,6 +172,7 @@ jobs:
             unzip -o "$ZIP_FILE" -d "out/odin/SM-A346B_EUX" && rm -rf "$ZIP_FILE"
           else
             ./scripts/download_fw.sh --ignore-source
+          fi
 
       - name: Download stock QSSI firmwares
         if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }}
