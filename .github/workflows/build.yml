@@ -163,11 +163,11 @@ jobs:
             printf '%s\n' "A346BXXSFEZC7/A346BOXMFEZC7/A346BXXSFEZC7" > "./out/odin/SM-A346B_EUX/.downloaded"
             ZIP_FILE="$(find "out/odin/SM-A346B_EUX" -name "*.zip" | sort -r | head -n 1)"
             if [[ -z "$ZIP_FILE" ]]; then
-              echo "No firmware ZIP found in out/odin/SM-S911B_EUX"
+              echo "No firmware ZIP found in out/odin/SM-A346B_EUX"
               exit 1
             fi
             echo "- Extracting $(basename "$ZIP_FILE")..."
-            unzip -o "$ZIP_FILE" -d "out/odin/SM-S911B_EUX" && rm -rf "$ZIP_FILE"
+            unzip -o "$ZIP_FILE" -d "out/odin/SM-A346B_EUX" && rm -rf "$ZIP_FILE"
           else
             ./scripts/download_fw.sh --ignore-source
 
