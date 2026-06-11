@@ -6,19 +6,49 @@ on:
       TEST_DWNL:
         description: 'Test samloader downloading (default is true, CHANGE TO FALSE)'
         required: true
-        default: 'yes'
-        type: choice
-        options:
-        - yes
-        - no
+        type: boolean
+        default: false
       DEBUG:
         description: 'Set as debug build'
         required: true
-        default: 'yes'
-        type: choice
-        options:
-        - yes
-        - no
+        type: boolean
+        default: false
+      source_model_essi:
+        description: 'Pinned source model for ESSI'
+        required: true
+        default: 'SM-S721B'
+      source_csc_essi:
+        description: 'Source CSC for ESSI'
+        required: true
+        default: 'EUX'
+      source_url_essi:
+        description: 'Source firmware URL for ESSI'
+        required: true
+        default: 'get from samfw.com'
+      source_model_qssi:
+        description: 'Pinned source model for QSSI'
+        required: true
+        default: 'SM-S921B'
+      source_csc_qssi:
+        description: 'Source CSC for QSSI'
+        required: true
+        default: 'EUX'
+      source_url_qssi:
+        description: 'Source firmware URL for QSSI'
+        required: true
+        default: 'get from samfw.com'
+      source_triplet_essi:
+        description: 'Source triplet for ESSI'
+        required: true
+        default: 'S721BXXSBCZC5/S721BOXMBCZC5/S721BXXSBCZC5'
+      source_triplet_qssi:
+        description: 'Source triplet for QSSI'
+        required: true
+        default: 'S921BXXSECZD1/S921BOXMECZD1/S921BXXSECZD1'
+      dm1q_url:
+        description: 'dm1q firmware url (ts the only snapd device we build sonion 🙏)'
+        required: true
+        default: 'get from samfw.com'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -90,39 +120,82 @@ jobs:
         if: ${{ github.event.inputs.TEST_DWNL == 'true' }}
         run: |
           source ./buildenv.sh ${{ matrix.target }}
-          ./scripts/download_fw.sh --ignore-target -v S721BXXSBCZC5/S721BOXMBCZC5/S721BXXSBCZC5/S721BXXSBCZC5
+          ./scripts/download_fw.sh --ignore-target
           ./scripts/extract_fw.sh --ignore-target
 
-      - name: Download source S22 stock
-        if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
+      - name: Download stock ESSI/MSSI firmwares
+        if: ${{ !endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }}
+        env:
+          SRC_MODEL: ${{ github.event.inputs.source_model_essi }}
+          SRC_CSC: ${{ github.event.inputs.source_csc_essi }}
+          TRIPLET: ${{ github.event.inputs.source_triplet_essi }}
+          URL: ${{ github.event.inputs.source_url_essi }}
         run: |
+          set -euo pipefail
+          FW_OUT_DIR="./out/odin/${SRC_MODEL}_${SRC_CSC}"
           if [[ "$GIT_DBG" == "true" ]]; then
             source ./buildenv.sh --debug ${{ matrix.target }}
           else
             source ./buildenv.sh ${{ matrix.target }}
           fi
-          ./scripts/download_fw.sh --ignore-target
-
-      - name: Download source S24 FE stock
-        if: ${{ !endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }} 
-        run: |
-          if [[ "$GIT_DBG" == "true" ]]; then
-            source ./buildenv.sh --debug ${{ matrix.target }}
-          else
-            source ./buildenv.sh ${{ matrix.target }}
+          echo "- Processing ${SRC_MODEL} firmware with ${SRC_CSC} CSC"
+          echo "    - Downloading ${TRIPLET}..."
+          mkdir -p "$FW_OUT_DIR"
+          wget -q --no-check-certificate --content-disposition "$URL" --directory-prefix="$FW_OUT_DIR"
+          printf '%s\n' "$TRIPLET" > "$FW_OUT_DIR/.downloaded"
+          ZIP_FILE="$(find "$FW_OUT_DIR" -name "*.zip" | sort -r | head -n 1)"
+          if [[ -z "$ZIP_FILE" ]]; then
+            echo "No firmware ZIP found in $FW_OUT_DIR"
+            exit 1
           fi
-          ./scripts/download_fw.sh --ignore-target -v S721BXXSBCZC5/S721BOXMBCZC5/S721BXXSBCZC5/S721BXXSBCZC5
-
-      - name: Download target stock
-        if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
-        run: |
-          if [[ "$GIT_DBG" == "true" ]]; then
-            source ./buildenv.sh --debug ${{ matrix.target }}
-          else
-            source ./buildenv.sh ${{ matrix.target }}
-          fi
+          echo "- Extracting $(basename "$ZIP_FILE")..."
+          unzip -o "$ZIP_FILE" -d "$FW_OUT_DIR" && rm -rf "$ZIP_FILE"
           ./scripts/download_fw.sh --ignore-source
 
+      - name: Download stock QSSI firmwares
+        if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }}
+        env:
+          SRC_MODEL: ${{ github.event.inputs.source_model_qssi }}
+          SRC_CSC: ${{ github.event.inputs.source_csc_qssi }}
+          TRIPLET: ${{ github.event.inputs.source_triplet_qssi }}
+          SRC_URL: ${{ github.event.inputs.source_url_qssi }}
+          DM1Q_URL: ${{ github.event.inputs.dm1q_url }}
+        run: |
+          set -euo pipefail
+          FW_OUT_DIR="./out/odin/${SRC_MODEL}_${SRC_CSC}"
+          if [[ "$GIT_DBG" == "true" ]]; then
+            source ./buildenv.sh --debug ${{ matrix.target }}
+          else
+            source ./buildenv.sh ${{ matrix.target }}
+          fi
+          echo "- Processing ${SRC_MODEL} firmware with ${SRC_CSC} CSC"
+          echo "    - Downloading ${TRIPLET}..."
+          mkdir -p "$FW_OUT_DIR"
+          wget -q --no-check-certificate --content-disposition "$URL" --directory-prefix="$FW_OUT_DIR"
+          printf '%s\n' "$TRIPLET" > "$FW_OUT_DIR/.downloaded"
+          ZIP_FILE="$(find "$FW_OUT_DIR" -name "*.zip" | sort -r | head -n 1)"
+          if [[ -z "$ZIP_FILE" ]]; then
+            echo "No firmware ZIP found in $FW_OUT_DIR"
+            exit 1
+          fi
+          echo "- Extracting $(basename "$ZIP_FILE")..."
+          unzip -o "$ZIP_FILE" -d "$FW_OUT_DIR" && rm -rf "$ZIP_FILE"
+          if [[ "${{ matrix.target }}" == "dm1q" ]]; then
+            echo "- Processing SM-S911B firmware with EUX CSC"
+            echo "    - Downloading S911BXXS9EZCI/S911BOXM9EZCI/S911BXXS9EZCI..."
+            mkdir -p ./out/odin/SM-S911B_EUX
+            wget -q --no-check-certificate --content-disposition "$DM1Q_URL" --directory-prefix="./out/odin/SM-S911B_EUX"
+            printf '%s\n' "S911BXXS9EZCI/S911BOXM9EZCI/S911BXXS9EZCI" > "./out/odin/SM-S911B_EUX/.downloaded"
+            ZIP_FILE="$(find "out/odin/SM-S911B_EUX" -name "*.zip" | sort -r | head -n 1)"
+            if [[ -z "$ZIP_FILE" ]]; then
+              echo "No firmware ZIP found in out/odin/SM-S911B_EUX"
+              exit 1
+            fi
+            echo "- Extracting $(basename "$ZIP_FILE")..."
+            unzip -o "$ZIP_FILE" -d "out/odin/SM-S911B_EUX" && rm -rf "$ZIP_FILE"
+          else
+            ./scripts/download_fw.sh --ignore-source
+            
       - name: Extract stock firmwares
         if: ${{ github.event.inputs.TEST_DWNL != 'true' }}
         run: |
