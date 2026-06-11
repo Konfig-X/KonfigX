@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       TEST_DWNL:
-        description: 'Test samloader downloading (default is true, CHANGE TO FALSE)'
+        description: 'Test samloader downloading'
         required: true
         type: boolean
         default: false
