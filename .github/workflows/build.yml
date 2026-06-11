@@ -44,7 +44,7 @@ on:
       source_triplet_qssi:
         description: 'Source triplet for QSSI'
         required: true
-        default: 'S921BXXSECZD1/S921BOXMECZD1/S921BXXSECZD1'
+        default: 'S921USQS5CZD2/S921UOYN5CZD2/S921USQS5CZD2'
       dm1q_url:
         description: 'dm1q firmware url (ts the only snapd device we build sonion 🙏)'
         required: true
