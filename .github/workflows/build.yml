@@ -136,7 +136,7 @@ jobs:
           URL: ${{ github.event.inputs.source_url_essi }}
           A34X_URL: ${{ github.event.inputs.a34x_url }}
         run: |
-          set -euo pipefail
+          set -eo pipefail
           FW_OUT_DIR="./out/odin/${SRC_MODEL}_${SRC_CSC}"
           if [[ "$GIT_DBG" == "true" ]]; then
             source ./buildenv.sh --debug ${{ matrix.target }}
@@ -180,7 +180,7 @@ jobs:
           SRC_URL: ${{ github.event.inputs.source_url_qssi }}
           DM1Q_URL: ${{ github.event.inputs.dm1q_url }}
         run: |
-          set -euo pipefail
+          set -eo pipefail
           FW_OUT_DIR="./out/odin/${SRC_MODEL}_${SRC_CSC}"
           if [[ "$GIT_DBG" == "true" ]]; then
             source ./buildenv.sh --debug ${{ matrix.target }}
