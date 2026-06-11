@@ -6,19 +6,13 @@ on:
       TEST_DWNL:
         description: 'Test samloader downloading (default is true, CHANGE TO FALSE)'
         required: true
-        default: 'yes'
-        type: choice
-        options:
-        - yes
-        - no
+        type: boolean
+        default: false
       DEBUG:
         description: 'Set as debug build'
         required: true
-        default: 'yes'
-        type: choice
-        options:
-        - yes
-        - no
+        type: boolean
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
