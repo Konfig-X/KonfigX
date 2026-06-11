@@ -28,11 +28,11 @@ on:
       source_model_qssi:
         description: 'Pinned source model for QSSI'
         required: true
-        default: 'SM-S921B'
+        default: 'SM-S921U'
       source_csc_qssi:
         description: 'Source CSC for QSSI'
         required: true
-        default: 'EUX'
+        default: 'XAA'
       source_url_qssi:
         description: 'Source firmware URL for QSSI'
         required: true
