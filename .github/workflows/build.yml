@@ -46,7 +46,11 @@ on:
         required: true
         default: 'S921USQS5CZD2/S921UOYN5CZD2/S921USQS5CZD2'
       dm1q_url:
-        description: 'dm1q firmware url (ts the only snapd device we build sonion 🙏)'
+        description: 'dm1q 8.0 firmware url (ts the only snapd device we build sonion 🙏)'
+        required: true
+        default: 'get from samfw.com'
+      a34x_url:
+        description: 'a34x 8.0 firmware url (this thing shoulda died on 8.0)'
         required: true
         default: 'get from samfw.com'
 
@@ -130,6 +134,7 @@ jobs:
           SRC_CSC: ${{ github.event.inputs.source_csc_essi }}
           TRIPLET: ${{ github.event.inputs.source_triplet_essi }}
           URL: ${{ github.event.inputs.source_url_essi }}
+          A34X_URL: ${{ github.event.inputs.a34x_url }}
         run: |
           set -euo pipefail
           FW_OUT_DIR="./out/odin/${SRC_MODEL}_${SRC_CSC}"
@@ -150,7 +155,21 @@ jobs:
           fi
           echo "- Extracting $(basename "$ZIP_FILE")..."
           unzip -o "$ZIP_FILE" -d "$FW_OUT_DIR" && rm -rf "$ZIP_FILE"
-          ./scripts/download_fw.sh --ignore-source
+          if [[ "${{ matrix.target }}" == "a34x" ]]; then
+            echo "- Processing SM-A346B firmware with EUX CSC"
+            echo "    - Downloading A346BXXSFEZC7/A346BOXMFEZC7/A346BXXSFEZC7..."
+            mkdir -p ./out/odin/SM-A346B_EUX
+            wget -q --no-check-certificate --content-disposition "$A34X_URL" --directory-prefix="./out/odin/SM-A346B_EUX"
+            printf '%s\n' "A346BXXSFEZC7/A346BOXMFEZC7/A346BXXSFEZC7" > "./out/odin/SM-A346B_EUX/.downloaded"
+            ZIP_FILE="$(find "out/odin/SM-A346B_EUX" -name "*.zip" | sort -r | head -n 1)"
+            if [[ -z "$ZIP_FILE" ]]; then
+              echo "No firmware ZIP found in out/odin/SM-S911B_EUX"
+              exit 1
+            fi
+            echo "- Extracting $(basename "$ZIP_FILE")..."
+            unzip -o "$ZIP_FILE" -d "out/odin/SM-S911B_EUX" && rm -rf "$ZIP_FILE"
+          else
+            ./scripts/download_fw.sh --ignore-source
 
       - name: Download stock QSSI firmwares
         if: ${{ endsWith(matrix.target, 'q') && github.event.inputs.TEST_DWNL != 'true' }}
