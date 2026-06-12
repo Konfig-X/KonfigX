@@ -27,10 +27,10 @@ IS_KONFIGX_CERT_AVAILABLE()
     local PLATFORM_KEY_SHA1="79ae16007b3c3e4ec7d0ac5a20b0504ca599c64b"
     local OTA_KEY_SHA1="849cbc56ca4df7aa42e3c027b55071f28616fc49"
 
-    local USES_UNICA_CERT="false"
+    local USES_KONFIGX_CERT="false"
     if [[ "$(sha1sum "$SRC_DIR/security/konfigx_platform.pk8" 2> /dev/null | cut -d " " -f 1)" == "$PLATFORM_KEY_SHA1" ]] && \
             [[ "$(sha1sum "$SRC_DIR/security/konfigx_ota.pk8" 2> /dev/null | cut -d " " -f 1)" == "$OTA_KEY_SHA1" ]]; then
-        USES_UNICA_CERT="true"
+        USES_KONFIGX_CERT="true"
     fi
 
     echo "$USES_UNICA_CERT"
