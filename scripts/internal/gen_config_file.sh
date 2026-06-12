@@ -33,7 +33,7 @@ IS_KONFIGX_CERT_AVAILABLE()
         USES_KONFIGX_CERT="true"
     fi
 
-    echo "$USES_UNICA_CERT"
+    echo "$USES_KONFIGX_CERT"
 }
 # ]
 
