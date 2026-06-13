@@ -444,7 +444,10 @@ fi
 # Apply before SEC_PRODUCT_FEATURE_LCD_CONFIG_HFR_* to avoid conflicts
 if [[ "$SOURCE_LCD_CONFIG_SEAMLESS_BRT" != "$TARGET_LCD_CONFIG_SEAMLESS_BRT" ]] || \
         [[ "$SOURCE_LCD_CONFIG_SEAMLESS_LUX" != "$TARGET_LCD_CONFIG_SEAMLESS_LUX" ]]; then
-    if [[ "$SOURCE_LCD_CONFIG_SEAMLESS_BRT" != "none" ]] && [[ "$SOURCE_LCD_CONFIG_SEAMLESS_LUX" != "none" ]] && \
+    if [[ "$SOURCE_LCD_CONFIG_SEAMLESS_BRT" == "none" ]] && [[ "$SOURCE_LCD_CONFIG_SEAMLESS_LUX" == "none" ]] && \
+            [[ "$TARGET_LCD_CONFIG_SEAMLESS_BRT" != "none" ]] && [[ "$TARGET_LCD_CONFIG_SEAMLESS_LUX" != "none" ]]; then
+        LOG "\033[0;33m! LUX/BRT source is none, skipping LUX/BRT patch\033[0m"
+    elif [[ "$SOURCE_LCD_CONFIG_SEAMLESS_BRT" != "none" ]] && [[ "$SOURCE_LCD_CONFIG_SEAMLESS_LUX" != "none" ]] && \
             [[ "$TARGET_LCD_CONFIG_SEAMLESS_BRT" == "none" ]] && [[ "$TARGET_LCD_CONFIG_SEAMLESS_LUX" == "none" ]]; then
         APPLY_PATCH "system" "system/framework/framework.jar" \
             "$MODPATH/hfr/framework.jar/0001-Remove-brightness-threshold-values.patch"
