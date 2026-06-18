@@ -1,4 +1,4 @@
-# Copyright (C) 2025 BasGame1
+# Copyright (C) 2026 Daniella
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Debloat list for Samsung Exynos 850 devices (exynos850)
