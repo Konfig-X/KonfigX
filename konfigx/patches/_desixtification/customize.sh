@@ -1,4 +1,4 @@
-if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "mssi" ]]; then
+if [[ $TARGET_OS_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_OS_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_OS_SINGLE_SYSTEM_IMAGE == "mssi" ]]; then
     LOG_STEP_IN "- Target device with 32-Bit HALs detected."
 
     LOG_STEP_IN "- Adding $TARGET_NAME target /system/lib blobs"
