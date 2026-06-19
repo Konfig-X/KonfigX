@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: ${{ github.event.inputs.TEST_DWNL == 'true' && fromJSON('["o1s"]') || fromJSON('["a34x","dm1q","o1s","p3s","r9s","t2s"]') }}
+        target: ${{ github.event.inputs.TEST_DWNL == 'true' && fromJSON('["o1s"]') || fromJSON('["dm1q","o1s","p3s","r9s","t2s"]') }}
 
     steps:
       - name: Checkout repo
