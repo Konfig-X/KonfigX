@@ -134,7 +134,7 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 ### Contributors
 
 - **[K0nf1gur@r3 Ph0n3s](https://github.com/KonfigurarePhones)** (Owner)
-- **[DaniTheSillyFem](https://github.com/DaniTheSillyFem)** (Co-Owner??? + a34x)
+- **[DaniTheSillyFem](https://github.com/DaniTheSillyFem)** (Co-Owner + a21s)
 - **[YACINEGTI](https://github.com/Yacinegti-DZ)** (o1s + helper)
 - **[3k5i](https://github.com/samsungs215Ghype)** (o1s + helper)
 - **[gඞbi](https://github.com/gyabii)** (dm1q)
