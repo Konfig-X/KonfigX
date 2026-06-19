@@ -130,6 +130,7 @@ Special thanks to all projects and developers that inspired or contributed to Ko
 * Haip4eva (for tweaks)
 * ExtremeROM (for tweaks)
 * LumiROM (for tweaks and idea of ROM)
+* [BasGame1](https://github.com/BasGame1) for the reference for A21s config.sh and most of exynos850 plat
 
 ### Contributors
 
